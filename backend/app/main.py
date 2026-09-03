@@ -92,7 +92,23 @@ async def generic_exception_handler(request: Request, exc: Exception):
         content={"success": False, "message": "An unexpected error occurred while processing the request."}
     )
 
+# Root Endpoint
+@app.get("/", tags=["Health"])
+async def root():
+    return {
+        "success": True,
+        "message": "Smart Farming AI Backend is running",
+        "status": "healthy"
+    }
+
 # Health Check (Section 31)
+@app.get("/health", tags=["Health"])
+async def health():
+    return {
+        "success": True,
+        "status": "healthy"
+    }
+
 @app.get("/api/health", tags=["Health"])
 def health_check():
     return {
