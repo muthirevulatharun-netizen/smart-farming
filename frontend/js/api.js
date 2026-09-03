@@ -3,7 +3,12 @@
  * Manages authentication tokens, base URLs, error handling, and all backend API calls.
  */
 
-const API_BASE_URL = window.__API_URL__ || "http://localhost:8000";
+// API base URL resolution order:
+// 1. window.__API_URL__ (set in HTML or injected by host)
+// 2. VITE_API_URL / NEXT_PUBLIC_API_URL (if replaced at build time)
+// 3. Production Render backend (default)
+// 4. Fallback to localhost for local dev
+const API_BASE_URL = window.__API_URL__ || window.__VITE_API_URL__ || window.__NEXT_PUBLIC_API_URL__ || "https://smart-farming-710v.onrender.com";
 
 const ApiClient = {
     getToken() {
