@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: smart_farming_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: smartfarmer
+      POSTGRES_PASSWORD: secure_farming_password_2026
+      POSTGRES_DB: smart_farming
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U smartfarmer -d smart_farming"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: smart_farming_backend
+    restart: always
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+    environment:
+      - ENVIRONMENT=production
+      - DATABASE_URL=postgresql://smartfarmer:secure_farming_password_2026@db:5432/smart_farming
+      - JWT_SECRET=super_secret_jwt_key_smart_farming_ai_production_key_2026
+      - JWT_ALGORITHM=HS256
+      - OTP_PROVIDER=mock
+      - AI_PROVIDER=gemini
+      - WEATHER_PROVIDER=openmeteo
+      - FRONTEND_URL=*
+    volumes:
+      - ./uploads:/app/uploads
+
+volumes:
+  postgres_data:

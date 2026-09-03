@@ -1,0 +1,90 @@
+{
+  "Rice": {
+    "season": "Kharif",
+    "guidance": "Requires flooded or moist soil conditions and warm humid climate."
+  },
+  "Maize": {
+    "season": "Kharif / Rabi",
+    "guidance": "Well-drained loamy soil, sensitive to waterlogging."
+  },
+  "Chickpea": {
+    "season": "Rabi",
+    "guidance": "Cool climate, light to deep black soils, drought-tolerant legume."
+  },
+  "Kidneybeans": {
+    "season": "Kharif",
+    "guidance": "Prefers rich, well-drained loamy soil with neutral pH."
+  },
+  "Pigeonpeas": {
+    "season": "Kharif",
+    "guidance": "Deep root system, deep black or well-drained loam."
+  },
+  "Mothbeans": {
+    "season": "Kharif",
+    "guidance": "Extremely drought-resistant, suited for arid and semi-arid regions."
+  },
+  "Mungbean": {
+    "season": "Kharif / Summer",
+    "guidance": "Warm climate, well-drained loam or alluvial soils."
+  },
+  "Blackgram": {
+    "season": "Kharif / Rabi",
+    "guidance": "Heavy soils like vertisols, requires moderate moisture."
+  },
+  "Lentil": {
+    "season": "Rabi",
+    "guidance": "Cool season legume, light loams and alluvial soils."
+  },
+  "Pomegranate": {
+    "season": "Whole Year",
+    "guidance": "Semi-arid climate, deep loamy soils, drip irrigation recommended."
+  },
+  "Banana": {
+    "season": "Whole Year",
+    "guidance": "High nutrient feeder, rich organic soils with adequate drainage."
+  },
+  "Mango": {
+    "season": "Summer",
+    "guidance": "Tropical climate, deep alluvial or loamy soils."
+  },
+  "Grapes": {
+    "season": "Rabi / Summer",
+    "guidance": "Well-drained sandy loam or clay loam with high potash."
+  },
+  "Watermelon": {
+    "season": "Zaid / Summer",
+    "guidance": "Warm dry climate, sandy loams with organic matter."
+  },
+  "Muskmelon": {
+    "season": "Zaid / Summer",
+    "guidance": "High sunshine, warm nights, well-drained sandy soil."
+  },
+  "Apple": {
+    "season": "Temperate",
+    "guidance": "Hill stations, rich well-aerated loamy soil."
+  },
+  "Orange": {
+    "season": "Winter / Spring",
+    "guidance": "Subtropical climate, light well-drained soils."
+  },
+  "Papaya": {
+    "season": "Whole Year",
+    "guidance": "Tropical climate, fertile well-drained soil, avoid water stagnation."
+  },
+  "Coconut": {
+    "season": "Whole Year",
+    "guidance": "Coastal and high humidity regions, deep sandy loam."
+  },
+  "Cotton": {
+    "season": "Kharif",
+    "guidance": "Black cotton soil (vertisols), warm climate, moderate moisture."
+  },
+  "Jute": {
+    "season": "Kharif",
+    "guidance": "Warm and wet climate, fertile alluvial plains."
+  },
+  "Coffee": {
+    "season": "Plantation",
+    "guidance": "Highlands with shade, well-drained humus-rich acidic soil."
+  }
+}

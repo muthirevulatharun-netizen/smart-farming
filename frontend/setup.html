@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Smart Farming AI - Setup Farm</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-fixed": "#002117",
+                      "secondary-fixed-dim": "#95d3ba",
+                      "on-tertiary-fixed-variant": "#3e4943",
+                      "primary-fixed-dim": "#4edea3",
+                      "on-primary": "#ffffff",
+                      "secondary-container": "#adedd3",
+                      "on-primary-fixed-variant": "#005236",
+                      "surface": "#f8f9ff",
+                      "on-secondary-container": "#306d58",
+                      "on-primary-fixed": "#002113",
+                      "background": "#f8f9ff",
+                      "inverse-primary": "#4edea3",
+                      "on-background": "#0b1c30",
+                      "surface-tint": "#006c49",
+                      "tertiary-fixed-dim": "#bdcac1",
+                      "outline-variant": "#bbcabf",
+                      "primary-fixed": "#6ffbbe",
+                      "surface-container-highest": "#d3e4fe",
+                      "on-tertiary-fixed": "#131e19",
+                      "surface-bright": "#f8f9ff",
+                      "surface-container-high": "#dce9ff",
+                      "tertiary": "#55615a",
+                      "outline": "#6c7a71",
+                      "on-secondary-fixed-variant": "#0b513d",
+                      "error": "#ba1a1a",
+                      "secondary": "#2b6954",
+                      "on-error": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "surface-container": "#e5eeff",
+                      "primary-container": "#10b981",
+                      "on-primary-container": "#00422b",
+                      "primary": "#006c49",
+                      "tertiary-container": "#99a69e",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary-container": "#303c36",
+                      "surface-variant": "#d3e4fe",
+                      "inverse-surface": "#213145",
+                      "surface-dim": "#cbdbf5",
+                      "error-container": "#ffdad6",
+                      "on-surface": "#0b1c30",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-low": "#eff4ff",
+                      "tertiary-fixed": "#d9e6dd",
+                      "secondary-fixed": "#b0f0d6",
+                      "on-tertiary": "#ffffff",
+                      "on-surface-variant": "#3c4a42",
+                      "inverse-on-surface": "#eaf1ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "xs": "4px",
+                      "md": "24px",
+                      "margin-desktop": "48px",
+                      "lg": "40px",
+                      "base": "8px",
+                      "xl": "64px",
+                      "sm": "12px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "label-sm": ["manrope"],
+                      "display-lg": ["hankenGrotesk"],
+                      "body-lg": ["manrope"],
+                      "title-md": ["hankenGrotesk"],
+                      "headline-lg-mobile": ["hankenGrotesk"],
+                      "headline-lg": ["hankenGrotesk"],
+                      "body-md": ["manrope"]
+              },
+              "fontSize": {
+                      "label-sm": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                      "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                      "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                      "title-md": ["20px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                      "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                      "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                      "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }]
+              }
+            }
+          }
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        input, select {
+            width: 100%;
+            height: 56px;
+            border-radius: 1rem;
+            border: 1px solid #bbcabf;
+            background-color: #ffffff;
+            padding: 0 1rem;
+            color: #0b1c30;
+            outline: none;
+            transition: all 0.2s ease-in-out;
+        }
+        input:focus, select:focus {
+            border-color: #006c49;
+            box-shadow: 0 0 0 2px rgba(0, 108, 73, 0.2);
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #0b1c30;
+            font-family: 'hankenGrotesk', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .step-transition {
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+        .hidden-step {
+            display: none;
+            opacity: 0;
+            transform: translateX(20px);
+        }
+        .active-step {
+            display: flex;
+            opacity: 1;
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen flex flex-col justify-center items-center p-margin-mobile md:p-margin-desktop">
+<!-- Setup Wizard Card -->
+<main class="w-full max-w-2xl bg-surface-container-lowest rounded-xl shadow-[0_8px_32px_rgba(0,0,0,0.04)] border border-outline-variant/20 overflow-hidden flex flex-col my-auto">
+<!-- Header & Progress Section -->
+<div class="p-md md:p-lg border-b border-surface-container flex flex-col gap-md bg-surface">
+<div class="text-center">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-container text-on-primary-container font-label-sm text-label-sm mb-2">
+<span class="material-symbols-outlined text-[16px]">eco</span>
+Smart Farming AI
+</div>
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">Setup Your Farm</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">Configure your agricultural digital profile for tailored AI insights.</p>
+</div>
+<!-- Progress Indicator -->
+<div class="relative flex justify-between items-center max-w-md mx-auto w-full px-4">
+<div class="absolute top-1/2 left-0 w-full h-1 bg-surface-variant -translate-y-1/2 z-0 rounded-full"></div>
+<div class="absolute top-1/2 left-0 h-1 bg-primary -translate-y-1/2 z-0 rounded-full transition-all duration-300 w-[0%]" id="progress-line"></div>
+<!-- Step 1 Indicator -->
+<div class="relative z-10 flex flex-col items-center gap-2 group cursor-pointer" onclick="goToStep(1)">
+<div class="w-10 h-10 rounded-full flex items-center justify-center font-title-md text-title-md bg-primary text-on-primary shadow-[0_0_12px_rgba(0,108,73,0.3)] transition-colors" id="indicator-1">1</div>
+<span class="font-label-sm text-label-sm text-primary absolute -bottom-6 whitespace-nowrap">Farm Details</span>
+</div>
+<!-- Step 2 Indicator -->
+<div class="relative z-10 flex flex-col items-center gap-2 group cursor-pointer" onclick="goToStep(2)">
+<div class="w-10 h-10 rounded-full flex items-center justify-center font-title-md text-title-md bg-surface-variant text-on-surface-variant transition-colors" id="indicator-2">2</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant absolute -bottom-6 whitespace-nowrap transition-colors" id="label-2">Location</span>
+</div>
+<!-- Step 3 Indicator -->
+<div class="relative z-10 flex flex-col items-center gap-2 group cursor-pointer" onclick="goToStep(3)">
+<div class="w-10 h-10 rounded-full flex items-center justify-center font-title-md text-title-md bg-surface-variant text-on-surface-variant transition-colors" id="indicator-3">3</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant absolute -bottom-6 whitespace-nowrap transition-colors" id="label-3">First Crop</span>
+</div>
+</div>
+</div>
+
+<!-- Form Content Area -->
+<div class="p-md md:p-lg relative min-h-[380px]">
+<!-- STEP 1: Farm Details -->
+<div class="step-transition active-step flex flex-col gap-md" id="step-1">
+<div>
+<h2 class="font-title-md text-title-md text-on-surface mb-1">General Information</h2>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">Basic details about your farming operation.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="col-span-1 md:col-span-2">
+<label for="farm-name">Farm / Landholding Name</label>
+<input id="farm-name" placeholder="e.g. Green Valley Farm" type="text" value="Green Valley Estates"/>
+</div>
+<div>
+<label for="farm-area">Total Area (Acres)</label>
+<div class="relative">
+<input class="pl-10" id="farm-area" placeholder="2.5" type="number" step="any" value="2.5"/>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">aspect_ratio</span>
+</div>
+</div>
+<div>
+<label for="soil-type">Primary Soil Type</label>
+<div class="relative">
+<select class="appearance-none pl-10" id="soil-type">
+<option value="loam" selected>Loam (Ideal)</option>
+<option value="clay">Clay (Black Cotton / Heavy)</option>
+<option value="sandy">Sandy (Well-drained)</option>
+<option value="silt">Silt (Alluvial / Fertile)</option>
+</select>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">layers</span>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">arrow_drop_down</span>
+</div>
+</div>
+</div>
+</div>
+
+<!-- STEP 2: Location -->
+<div class="step-transition hidden-step flex flex-col gap-md w-full" id="step-2">
+<div class="flex justify-between items-end">
+<div>
+<h2 class="font-title-md text-title-md text-on-surface mb-1">Geographic Mapping</h2>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">Pinpoint your farm for precise hyper-local weather.</p>
+</div>
+<button onclick="detectGeolocation()" class="flex items-center gap-2 bg-primary-container text-on-primary-container px-4 py-2 rounded-full hover:bg-primary hover:text-on-primary transition-colors font-label-sm text-label-sm" id="detect-btn">
+<span class="material-symbols-outlined text-[18px]">my_location</span>
+Detect Location
+</button>
+</div>
+<!-- Map Interface Graphic -->
+<div class="relative w-full h-[200px] rounded-lg border border-outline-variant overflow-hidden bg-surface-container group">
+<div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDofBSOBqok8NKOevH4ammpWYKY6grdy6Eymud-eE5030YnnSIyQPdDcFI0zUgr_jOv6lBXTlc8OncvIcT1as57oIftJTvAUq9cw7935M0VijU9gaZBUbfZYYX9jX9EdCexNAiu1Uki9wZc1mPxoNwqEn7JvOX7fwr0B-4qGgt8UVHZyB8V8PGSxkkaOnNBXFEC3nIIJtZbBy4J1zgtZhvF8o2TD4X_NHGb32Mw5nNr9iQAtrAcHJRQhA')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/80 to-transparent pointer-events-none flex items-center justify-center">
+<div class="w-12 h-12 rounded-full border-2 border-primary flex items-center justify-center bg-primary/20 backdrop-blur-sm shadow-[0_0_15px_rgba(0,108,73,0.5)] animate-pulse">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+</div>
+</div>
+</div>
+<!-- Location Data Grid -->
+<div class="grid grid-cols-2 md:grid-cols-3 gap-sm">
+<div class="bg-surface p-sm rounded-lg border border-surface-variant">
+<div class="font-label-sm text-on-surface-variant mb-1 text-xs">Coordinates</div>
+<div id="display-coords" class="font-title-md text-on-surface tracking-tight text-xs">13.21° N, 79.10° E</div>
+</div>
+<div class="bg-surface p-sm rounded-lg border border-surface-variant">
+<div class="font-label-sm text-on-surface-variant mb-1 text-xs">Accuracy</div>
+<div class="font-title-md text-primary tracking-tight text-xs flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> GPS Lock ± 5m
+</div>
+</div>
+<div class="bg-surface p-sm rounded-lg border border-surface-variant col-span-2 md:col-span-1">
+<div class="font-label-sm text-on-surface-variant mb-1 text-xs">District &amp; State</div>
+<input id="input-district" type="text" value="Chittoor, Andhra Pradesh" class="!h-8 !p-1 text-xs border-0 bg-transparent font-bold text-on-surface"/>
+</div>
+</div>
+</div>
+
+<!-- STEP 3: Add Crop -->
+<div class="step-transition hidden-step flex flex-col gap-md" id="step-3">
+<div>
+<h2 class="font-title-md text-title-md text-on-surface mb-1">Primary Crop Planning</h2>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">Select your active crop to initialize your farming calendar.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div>
+<label for="crop-select">Crop Type</label>
+<div class="relative">
+<select class="appearance-none pl-10" id="crop-select">
+<option value="Tomato" selected>Tomato (టమోటా)</option>
+<option value="Rice">Rice (వరి)</option>
+<option value="Chilli">Chilli (మిరప)</option>
+<option value="Cotton">Cotton (పత్తి)</option>
+<option value="Maize">Maize (మొక్కజొన్న)</option>
+<option value="Groundnut">Groundnut (వేరుశనగ)</option>
+</select>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">psychiatry</span>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">arrow_drop_down</span>
+</div>
+</div>
+<div>
+<label for="irrigation-type">Irrigation Method</label>
+<div class="relative">
+<select class="appearance-none pl-10" id="irrigation-type">
+<option value="drip">Drip Irrigation (బిందు సేద్యం)</option>
+<option value="sprinkler">Sprinkler (తుంపర సేద్యం)</option>
+<option value="flood">Furrow / Flood Irrigation</option>
+<option value="rainfed">Rainfed (వర్షాధార)</option>
+</select>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">water_drop</span>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">arrow_drop_down</span>
+</div>
+</div>
+<div>
+<label for="planting-date">Sowing / Planting Date</label>
+<input id="planting-date" type="date" value="2026-08-15"/>
+</div>
+<div>
+<label for="growth-stage">Current Stage</label>
+<div class="relative">
+<select class="appearance-none pl-10" id="growth-stage">
+<option value="planning">Pre-Planting</option>
+<option value="germination">Germination / Emergence</option>
+<option value="vegetative" selected>Vegetative Growth</option>
+<option value="flowering">Flowering / Fruit Setting</option>
+</select>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">timeline</span>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">arrow_drop_down</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Footer Actions -->
+<div class="p-md md:p-lg bg-surface border-t border-surface-container flex items-center justify-between mt-auto">
+<button class="invisible flex items-center justify-center w-12 h-12 rounded-full border border-outline-variant text-on-surface hover:bg-surface-variant transition-colors cursor-pointer" id="btn-back" onclick="prevStep()">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<button class="flex items-center justify-center px-8 h-14 bg-primary text-on-primary rounded-full font-title-md text-title-md hover:bg-primary/90 shadow-md transition-all active:scale-95 ml-auto gap-2 cursor-pointer" id="btn-next" onclick="nextStep()">
+    Continue
+    <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</main>
+
+<script src="js/api.js"></script>
+<script>
+    let currentStep = 1;
+    const totalSteps = 3;
+    let lat = 13.2172;
+    let lon = 79.1003;
+
+    function updateUI() {
+        for (let i = 1; i <= totalSteps; i++) {
+            const el = document.getElementById(`step-${i}`);
+            if (i === currentStep) {
+                el.classList.remove('hidden-step');
+                el.classList.add('active-step');
+            } else {
+                el.classList.remove('active-step');
+                el.classList.add('hidden-step');
+            }
+        }
+
+        const progressLine = document.getElementById('progress-line');
+        if(currentStep === 1) progressLine.style.width = '0%';
+        if(currentStep === 2) progressLine.style.width = '50%';
+        if(currentStep === 3) progressLine.style.width = '100%';
+
+        for (let i = 1; i <= totalSteps; i++) {
+            const dot = document.getElementById(`indicator-${i}`);
+            const label = document.getElementById(`label-${i}`);
+            if (i <= currentStep) {
+                dot.className = "w-10 h-10 rounded-full flex items-center justify-center font-title-md text-title-md bg-primary text-on-primary shadow-[0_0_12px_rgba(0,108,73,0.3)] transition-all duration-300";
+                if(label) label.className = "font-label-sm text-label-sm text-primary absolute -bottom-6 whitespace-nowrap transition-colors duration-300";
+            } else {
+                dot.className = "w-10 h-10 rounded-full flex items-center justify-center font-title-md text-title-md bg-surface-variant text-on-surface-variant transition-all duration-300";
+                if(label) label.className = "font-label-sm text-label-sm text-on-surface-variant absolute -bottom-6 whitespace-nowrap transition-colors duration-300";
+            }
+        }
+
+        const btnBack = document.getElementById('btn-back');
+        const btnNext = document.getElementById('btn-next');
+
+        if (currentStep === 1) {
+            btnBack.classList.add('invisible');
+            btnNext.innerHTML = 'Continue <span class="material-symbols-outlined text-[20px]">arrow_forward</span>';
+        } else if (currentStep === totalSteps) {
+            btnBack.classList.remove('invisible');
+            btnNext.innerHTML = 'Complete Setup <span class="material-symbols-outlined text-[20px]">check</span>';
+        } else {
+            btnBack.classList.remove('invisible');
+            btnNext.innerHTML = 'Continue <span class="material-symbols-outlined text-[20px]">arrow_forward</span>';
+        }
+    }
+
+    function goToStep(step) {
+        currentStep = step;
+        updateUI();
+    }
+
+    function detectGeolocation() {
+        if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition(
+                (pos) => {
+                    lat = pos.coords.latitude;
+                    lon = pos.coords.longitude;
+                    document.getElementById("display-coords").textContent = `${lat.toFixed(2)}° N, ${lon.toFixed(2)}° E`;
+                    alert(`Location detected: ${lat.toFixed(2)}, ${lon.toFixed(2)}`);
+                },
+                (err) => {
+                    alert("Location access denied or unavailable. Using regional default (Andhra Pradesh).");
+                }
+            );
+        }
+    }
+
+    async function nextStep() {
+        if (currentStep < totalSteps) {
+            currentStep++;
+            updateUI();
+        } else {
+            const btn = document.getElementById('btn-next');
+            btn.disabled = true;
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Saving Profile...';
+
+            const farmName = document.getElementById("farm-name").value;
+            const farmArea = parseFloat(document.getElementById("farm-area").value) || 2.5;
+            const soilType = document.getElementById("soil-type").value;
+            const primaryCrop = document.getElementById("crop-select").value;
+            const irrigationType = document.getElementById("irrigation-type").value;
+            const district = document.getElementById("input-district").value;
+
+            try {
+                await ApiClient.profile.update({
+                    farm_name: farmName,
+                    farm_size: farmArea,
+                    soil_type: soilType,
+                    primary_crop: primaryCrop,
+                    irrigation_type: irrigationType,
+                    district: district,
+                    state: "Andhra Pradesh"
+                });
+
+                // Also initialize calendar
+                try {
+                    const sowingVal = document.getElementById("planting-date").value || "2026-08-15";
+                    await ApiClient.calendar.create({
+                        crop: primaryCrop,
+                        sowing_date: sowingVal,
+                        location: district
+                    });
+                } catch(e) {}
+
+                alert("Farm profile configured successfully!");
+                window.location.href = "dashboard.html";
+            } catch (err) {
+                // If unauthenticated, still allow direct progression
+                window.location.href = "dashboard.html";
+            }
+        }
+    }
+
+    function prevStep() {
+        if (currentStep > 1) {
+            currentStep--;
+            updateUI();
+        }
+    }
+</script>
+</body>
+</html>

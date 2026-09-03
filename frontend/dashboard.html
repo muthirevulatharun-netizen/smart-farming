@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Smart Farming AI - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-fixed": "#002117",
+                      "secondary-fixed-dim": "#95d3ba",
+                      "on-tertiary-fixed-variant": "#3e4943",
+                      "primary-fixed-dim": "#4edea3",
+                      "on-primary": "#ffffff",
+                      "secondary-container": "#adedd3",
+                      "on-primary-fixed-variant": "#005236",
+                      "surface": "#f8f9ff",
+                      "on-secondary-container": "#306d58",
+                      "on-primary-fixed": "#002113",
+                      "background": "#f8f9ff",
+                      "inverse-primary": "#4edea3",
+                      "on-background": "#0b1c30",
+                      "surface-tint": "#006c49",
+                      "tertiary-fixed-dim": "#bdcac1",
+                      "outline-variant": "#bbcabf",
+                      "primary-fixed": "#6ffbbe",
+                      "surface-container-highest": "#d3e4fe",
+                      "on-tertiary-fixed": "#131e19",
+                      "surface-bright": "#f8f9ff",
+                      "surface-container-high": "#dce9ff",
+                      "tertiary": "#55615a",
+                      "outline": "#6c7a71",
+                      "on-secondary-fixed-variant": "#0b513d",
+                      "error": "#ba1a1a",
+                      "secondary": "#2b6954",
+                      "on-error": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "surface-container": "#e5eeff",
+                      "primary-container": "#10b981",
+                      "on-primary-container": "#00422b",
+                      "primary": "#006c49",
+                      "tertiary-container": "#99a69e",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary-container": "#303c36",
+                      "surface-variant": "#d3e4fe",
+                      "inverse-surface": "#213145",
+                      "surface-dim": "#cbdbf5",
+                      "error-container": "#ffdad6",
+                      "on-surface": "#0b1c30",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-low": "#eff4ff",
+                      "tertiary-fixed": "#d9e6dd",
+                      "secondary-fixed": "#b0f0d6",
+                      "on-tertiary": "#ffffff",
+                      "on-surface-variant": "#3c4a42",
+                      "inverse-on-surface": "#eaf1ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "xs": "4px",
+                      "md": "24px",
+                      "margin-desktop": "48px",
+                      "lg": "40px",
+                      "base": "8px",
+                      "xl": "64px",
+                      "sm": "12px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "label-sm": ["manrope"],
+                      "display-lg": ["hankenGrotesk"],
+                      "body-lg": ["manrope"],
+                      "title-md": ["hankenGrotesk"],
+                      "headline-lg-mobile": ["hankenGrotesk"],
+                      "headline-lg": ["hankenGrotesk"],
+                      "body-md": ["manrope"]
+              },
+              "fontSize": {
+                      "label-sm": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                      "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                      "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                      "title-md": ["20px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                      "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                      "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                      "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }]
+              }
+            }
+          }
+        }
+      </script>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen">
+<!-- Desktop Side Nav -->
+<aside class="fixed left-0 top-0 h-full w-[280px] hidden md:flex flex-col bg-surface-container-low shadow-sm p-md gap-base z-50">
+<div class="mb-lg cursor-pointer" onclick="window.location.href='index.html'">
+<h1 class="font-hankenGrotesk font-bold text-primary text-headline-lg flex items-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">eco</span>
+    Farm Manager
+</h1>
+<p id="nav-farm-name" class="font-manrope text-body-md text-on-surface-variant mt-1">Green Valley Estates</p>
+</div>
+<nav class="flex-1 flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container rounded-xl transition-all font-title-md" href="dashboard.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+    Dashboard
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-all font-body-md active:scale-[0.98]" href="dashboard.html">
+<span class="material-symbols-outlined">potted_plant</span>
+    My Crops
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-all font-body-md active:scale-[0.98]" href="scanner.html">
+<span class="material-symbols-outlined">photo_camera</span>
+    Crop Scanner
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-all font-body-md active:scale-[0.98]" href="assistant.html">
+<span class="material-symbols-outlined">smart_toy</span>
+    AI Assistant
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-all font-body-md active:scale-[0.98]" href="soil-irrigation.html">
+<span class="material-symbols-outlined">grass</span>
+    Soil
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-all font-body-md active:scale-[0.98]" href="weather-market.html">
+<span class="material-symbols-outlined">thermostat</span>
+    Weather
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-all font-body-md active:scale-[0.98]" href="soil-irrigation.html">
+<span class="material-symbols-outlined">water_drop</span>
+    Irrigation
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-all font-body-md active:scale-[0.98]" href="weather-market.html">
+<span class="material-symbols-outlined">trending_up</span>
+    Market
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-all font-body-md active:scale-[0.98]" href="setup.html">
+<span class="material-symbols-outlined">settings</span>
+    Settings
+</a>
+</nav>
+<div class="mt-auto">
+<button onclick="window.location.href='scanner.html'" class="w-full bg-primary text-on-primary font-title-md py-4 rounded-xl hover:bg-on-primary-fixed-variant transition-colors flex items-center justify-center gap-2 mb-4">
+<span class="material-symbols-outlined">qr_code_scanner</span>
+    Quick Scan
+</button>
+<div class="flex flex-col gap-2 border-t border-outline-variant pt-4">
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-all font-body-md" href="assistant.html">
+<span class="material-symbols-outlined">help</span>
+    Support
+</a>
+<a onclick="ApiClient.auth.logout()" class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-all font-body-md cursor-pointer" href="#">
+<span class="material-symbols-outlined">logout</span>
+    Logout
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="md:ml-[280px] pb-24 md:pb-8 pt-6 px-margin-mobile md:px-margin-desktop min-h-screen">
+<!-- Header Section -->
+<header class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+<div>
+<h2 id="farmer-greeting" class="font-headline-lg-mobile md:font-headline-lg text-on-surface">Good Morning, Farmer 👨‍🌾</h2>
+<div class="flex items-center gap-1 text-on-surface-variant mt-1 font-body-md">
+<span class="material-symbols-outlined text-primary">location_on</span>
+<span id="farmer-location">Chittoor, AP</span>
+</div>
+</div>
+<div class="md:hidden flex justify-between items-center bg-surface rounded-xl p-3 shadow-sm border border-outline-variant/30">
+<div class="font-hankenGrotesk font-bold text-primary text-title-md">Smart Farming AI</div>
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-primary cursor-pointer" onclick="window.location.href='assistant.html'">notifications</span>
+<span class="material-symbols-outlined text-primary cursor-pointer" onclick="window.location.href='setup.html'">account_circle</span>
+</div>
+</div>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- AI Alert Banner -->
+<div id="ai-alert-container" class="col-span-1 md:col-span-12 bg-error-container text-on-error-container rounded-xl p-4 flex items-start gap-3 shadow-sm border border-error/20">
+<span class="material-symbols-outlined text-error mt-0.5">warning</span>
+<div>
+<h3 class="font-title-md font-bold mb-1">AI Alert</h3>
+<p id="ai-alert-message" class="font-body-md">Rain expected tomorrow. Avoid unnecessary irrigation today.</p>
+</div>
+</div>
+<!-- Weather Card -->
+<div onclick="window.location.href='weather-market.html'" class="col-span-1 md:col-span-4 bg-surface rounded-xl p-6 shadow-sm border border-outline-variant/20 flex flex-col justify-between cursor-pointer hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-title-md text-on-surface">Current Weather</h3>
+<span id="weather-icon" class="material-symbols-outlined text-primary text-[32px]">partly_cloudy_day</span>
+</div>
+<div class="flex items-end gap-2 mb-6">
+<span id="weather-temp" class="font-display-lg text-on-surface">33°</span>
+<span class="font-title-md text-on-surface-variant mb-1">C</span>
+</div>
+<div class="grid grid-cols-3 gap-2 border-t border-outline-variant/30 pt-4">
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-secondary text-sm mb-1">humidity_percentage</span>
+<span id="weather-humidity" class="font-label-sm text-on-surface-variant">45%</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-secondary text-sm mb-1">rainy</span>
+<span id="weather-rain" class="font-label-sm text-on-surface-variant">10%</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-secondary text-sm mb-1">air</span>
+<span id="weather-wind" class="font-label-sm text-on-surface-variant">12km/h</span>
+</div>
+</div>
+</div>
+<!-- Farm Health Card -->
+<div class="col-span-1 md:col-span-8 bg-surface rounded-xl p-6 shadow-sm border border-outline-variant/20 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary-container rounded-bl-full opacity-20 blur-xl"></div>
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-title-md text-on-surface">Overall Farm Health</h3>
+<div id="farm-health-score" class="bg-primary-container text-on-primary-container px-3 py-1 rounded-full font-title-md">
+    84/100
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-surface-container-low p-4 rounded-lg flex flex-col items-center gap-2">
+<span class="material-symbols-outlined text-primary">grass</span>
+<span class="font-label-sm text-on-surface-variant uppercase">Soil</span>
+<div class="w-full bg-surface-container-highest rounded-full h-1.5 mt-1">
+<div class="bg-primary h-1.5 rounded-full w-[90%]"></div>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-lg flex flex-col items-center gap-2">
+<span class="material-symbols-outlined text-primary">potted_plant</span>
+<span class="font-label-sm text-on-surface-variant uppercase">Crop</span>
+<div class="w-full bg-surface-container-highest rounded-full h-1.5 mt-1">
+<div class="bg-primary h-1.5 rounded-full w-[80%]"></div>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-lg flex flex-col items-center gap-2">
+<span class="material-symbols-outlined text-primary">water_drop</span>
+<span class="font-label-sm text-on-surface-variant uppercase">Water</span>
+<div class="w-full bg-surface-container-highest rounded-full h-1.5 mt-1">
+<div class="bg-primary h-1.5 rounded-full w-[70%]"></div>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-lg flex flex-col items-center gap-2">
+<span class="material-symbols-outlined text-error">coronavirus</span>
+<span class="font-label-sm text-on-surface-variant uppercase">Disease Risk</span>
+<div class="w-full bg-surface-container-highest rounded-full h-1.5 mt-1">
+<div class="bg-error h-1.5 rounded-full w-[20%]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Crop Health List -->
+<div class="col-span-1 md:col-span-6 bg-surface rounded-xl p-6 shadow-sm border border-outline-variant/20">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-title-md text-on-surface">Crop Health</h3>
+<button onclick="window.location.href='scanner.html'" class="text-primary font-label-sm uppercase tracking-wider hover:underline">Scan New</button>
+</div>
+<div class="flex flex-col gap-4">
+<!-- Tomato -->
+<div class="flex items-center justify-between p-3 bg-surface-container-low rounded-lg hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-4">
+<img class="w-12 h-12 rounded-lg object-cover border border-outline-variant/30" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoaxDfB1BRfZi2pFXO-nEE6f9xloj_9o_WQNOa75hdEZ1u659c94d6jcIojejWeziE0K2WNhLl2RiCY4-o_UVnt3dijLMcqT_ckRN0l_NqTf7lwEK6-sIsH_XyhqHADhGBvmxs3wg5_oH1TH98Aj0o_Uk_bCcXk2OFYqe4wJjmj7RIN1sdsykcAX5KCkFxxlhuyo5TrfK1dNO_lHm_zoHcTwVFvGbDhImEgL5N15Rc2QoG8trMRh7Z2Q"/>
+<div>
+<h4 class="font-title-md text-on-surface">Tomato</h4>
+<span class="font-label-sm text-primary">Good Condition</span>
+</div>
+</div>
+<div class="text-right">
+<div class="font-title-md text-on-surface">84%</div>
+<span class="font-label-sm text-on-surface-variant">Health</span>
+</div>
+</div>
+<!-- Chilli -->
+<div class="flex items-center justify-between p-3 bg-surface-container-low rounded-lg hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-4">
+<img class="w-12 h-12 rounded-lg object-cover border border-outline-variant/30" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNf9-0YM6WWPqFA2JAOMf-iBQBjo9MJ0foQ4ZEypk4vSQALpGmo3OlgBEw8s_ekOzSJNDZoGw0JvR2R7rl38GwoZ1lZiQ3m4HOkPsNo_SsfzvDQ_HCoJ9G5EzurDqOEkICFalNnD7pVRv7Sa4PKyt7oGeEB7pFjtXxfKpPskxU2khnQgoDDpAW5JOz5QC7R7p81GyFSQ6ZT28CUFxW6ZxHrDYOkb9KjDiNN298dU_1MnA0r1JXbjPsbQ"/>
+<div>
+<h4 class="font-title-md text-on-surface">Chilli</h4>
+<span class="font-label-sm text-tertiary">Needs Attention</span>
+</div>
+</div>
+<div class="text-right">
+<div class="font-title-md text-on-surface">76%</div>
+<span class="font-label-sm text-on-surface-variant">Health</span>
+</div>
+</div>
+<!-- Rice -->
+<div class="flex items-center justify-between p-3 bg-surface-container-low rounded-lg hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-4">
+<img class="w-12 h-12 rounded-lg object-cover border border-outline-variant/30" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCL03BDty7LNmHxDgVCcOszVmIZmozF76cROnjkBX9OKI_W4Nb0oYBSYesggoWxEjiiPtt3OE8A7kO1_zkjj2m6yVPu3McPOGgFzc0Ag3_DvqZP97PNRIS3V_j2tLbeyXyvvv1gAxPn4CW_-u2sTZ6svsHOjnECR0O8iVTyHK5PemTSGkxFg4xq2ZPzL4OejwKxQa4ufuebpmujMEBd6_j30OsoexBu2ENpih8BhU0kq1UtBFPCixZmeA"/>
+<div>
+<h4 class="font-title-md text-on-surface">Rice</h4>
+<span class="font-label-sm text-primary">Excellent</span>
+</div>
+</div>
+<div class="text-right">
+<div class="font-title-md text-on-surface">91%</div>
+<span class="font-label-sm text-on-surface-variant">Health</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Actions Grid -->
+<div class="col-span-1 md:col-span-6 bg-surface rounded-xl p-6 shadow-sm border border-outline-variant/20">
+<h3 class="font-title-md text-on-surface mb-6">Quick Actions</h3>
+<div class="grid grid-cols-3 gap-4">
+<button onclick="window.location.href='scanner.html'" class="flex flex-col items-center justify-center p-4 bg-surface-container-low rounded-xl hover:bg-surface-container-high transition-colors group">
+<span class="material-symbols-outlined text-primary mb-2 group-hover:scale-110 transition-transform">qr_code_scanner</span>
+<span class="font-label-sm text-on-surface text-center">Scan Crop</span>
+</button>
+<button onclick="openCropRecommendModal()" class="flex flex-col items-center justify-center p-4 bg-surface-container-low rounded-xl hover:bg-surface-container-high transition-colors group">
+<span class="material-symbols-outlined text-primary mb-2 group-hover:scale-110 transition-transform">recommend</span>
+<span class="font-label-sm text-on-surface text-center">Recommend Crop</span>
+</button>
+<button onclick="window.location.href='soil-irrigation.html'" class="flex flex-col items-center justify-center p-4 bg-surface-container-low rounded-xl hover:bg-surface-container-high transition-colors group">
+<span class="material-symbols-outlined text-primary mb-2 group-hover:scale-110 transition-transform">water_drop</span>
+<span class="font-label-sm text-on-surface text-center">Irrigation</span>
+</button>
+<button onclick="window.location.href='soil-irrigation.html'" class="flex flex-col items-center justify-center p-4 bg-surface-container-low rounded-xl hover:bg-surface-container-high transition-colors group">
+<span class="material-symbols-outlined text-primary mb-2 group-hover:scale-110 transition-transform">grass</span>
+<span class="font-label-sm text-on-surface text-center">Soil</span>
+</button>
+<button onclick="window.location.href='weather-market.html'" class="flex flex-col items-center justify-center p-4 bg-surface-container-low rounded-xl hover:bg-surface-container-high transition-colors group">
+<span class="material-symbols-outlined text-primary mb-2 group-hover:scale-110 transition-transform">thermostat</span>
+<span class="font-label-sm text-on-surface text-center">Weather</span>
+</button>
+<button onclick="window.location.href='assistant.html'" class="flex flex-col items-center justify-center p-4 bg-surface-container-low rounded-xl hover:bg-surface-container-high transition-colors group">
+<span class="material-symbols-outlined text-primary mb-2 group-hover:scale-110 transition-transform">smart_toy</span>
+<span class="font-label-sm text-on-surface text-center">Ask AI</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Mobile Bottom Nav -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe h-20 md:hidden bg-surface-container rounded-t-lg shadow-[0_-4px_12px_rgba(0,0,0,0.05)]">
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full w-12 h-12 transition-all duration-300 active:scale-90" href="dashboard.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-[10px] mt-0.5">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/50 rounded-full w-12 h-12 transition-all duration-300 active:scale-90" href="dashboard.html">
+<span class="material-symbols-outlined">agriculture</span>
+<span class="font-label-sm text-[10px] mt-0.5">Crops</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/50 rounded-full w-12 h-12 transition-all duration-300 active:scale-90" href="scanner.html">
+<span class="material-symbols-outlined">qr_code_scanner</span>
+<span class="font-label-sm text-[10px] mt-0.5">Scan</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/50 rounded-full w-12 h-12 transition-all duration-300 active:scale-90" href="assistant.html">
+<span class="material-symbols-outlined">smart_toy</span>
+<span class="font-label-sm text-[10px] mt-0.5">AI</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/50 rounded-full w-12 h-12 transition-all duration-300 active:scale-90" href="setup.html">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-[10px] mt-0.5">Profile</span>
+</a>
+</nav>
+
+<!-- Interactive ML Crop Recommendation Modal (matching exact design system) -->
+<div id="crop-recommend-modal" class="hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
+<div class="bg-surface-container-lowest w-full max-w-lg rounded-2xl shadow-xl p-6 border border-outline-variant/20 max-h-[90vh] overflow-y-auto">
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-title-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">psychology</span>
+AI Crop Recommendation
+</h3>
+<button onclick="closeCropRecommendModal()" class="text-on-surface-variant hover:text-on-surface">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<p class="font-body-md text-sm text-on-surface-variant mb-4">
+Enter your soil test values and climate to predict the highest yielding crop using our trained Random Forest model.
+</p>
+<form id="crop-recommend-form" onsubmit="event.preventDefault(); submitCropRecommendation();" class="space-y-3">
+<div class="grid grid-cols-3 gap-2">
+<div>
+<label class="block text-xs font-bold text-on-surface mb-1">Nitrogen (N)</label>
+<input id="rec-n" type="number" step="any" value="90" required class="w-full p-2 border border-outline-variant rounded-lg text-sm"/>
+</div>
+<div>
+<label class="block text-xs font-bold text-on-surface mb-1">Phosphorus (P)</label>
+<input id="rec-p" type="number" step="any" value="42" required class="w-full p-2 border border-outline-variant rounded-lg text-sm"/>
+</div>
+<div>
+<label class="block text-xs font-bold text-on-surface mb-1">Potassium (K)</label>
+<input id="rec-k" type="number" step="any" value="43" required class="w-full p-2 border border-outline-variant rounded-lg text-sm"/>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<div>
+<label class="block text-xs font-bold text-on-surface mb-1">Temperature (°C)</label>
+<input id="rec-temp" type="number" step="any" value="25" required class="w-full p-2 border border-outline-variant rounded-lg text-sm"/>
+</div>
+<div>
+<label class="block text-xs font-bold text-on-surface mb-1">Humidity (%)</label>
+<input id="rec-hum" type="number" step="any" value="80" required class="w-full p-2 border border-outline-variant rounded-lg text-sm"/>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<div>
+<label class="block text-xs font-bold text-on-surface mb-1">Soil pH</label>
+<input id="rec-ph" type="number" step="any" value="6.5" required class="w-full p-2 border border-outline-variant rounded-lg text-sm"/>
+</div>
+<div>
+<label class="block text-xs font-bold text-on-surface mb-1">Rainfall (mm)</label>
+<input id="rec-rain" type="number" step="any" value="200" required class="w-full p-2 border border-outline-variant rounded-lg text-sm"/>
+</div>
+</div>
+<button id="btn-predict-crop" type="submit" class="w-full py-3 bg-primary text-on-primary font-title-md rounded-full shadow-md hover:bg-primary/90 transition-all flex items-center justify-center gap-2 mt-2">
+<span class="material-symbols-outlined">travel_explore</span>
+Predict Best Crop
+</button>
+</form>
+
+<!-- Prediction Output Container -->
+<div id="crop-recommend-result" class="hidden mt-4 p-4 bg-primary-container/20 rounded-xl border border-primary/20 animate-fade-in">
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs uppercase font-bold text-primary tracking-wider">Top Recommendation</span>
+<span id="rec-confidence" class="px-2 py-0.5 bg-primary text-on-primary text-xs font-bold rounded-full"></span>
+</div>
+<h4 id="rec-crop-name" class="font-headline-lg-mobile text-primary font-bold"></h4>
+<p id="rec-season" class="text-xs text-on-surface-variant font-semibold mb-2"></p>
+<p id="rec-guidance" class="text-sm text-on-surface leading-relaxed"></p>
+<div id="rec-alternatives" class="mt-2 text-xs text-on-surface-variant"></div>
+</div>
+</div>
+</div>
+
+<script src="js/api.js"></script>
+<script>
+    async function loadDashboard() {
+        try {
+            const data = await ApiClient.dashboard.getSummary();
+            if (data.farmer) {
+                document.getElementById("farmer-greeting").textContent = `Good Morning, ${data.farmer.name} 👨‍🌾`;
+                document.getElementById("farmer-location").textContent = data.farmer.location;
+                document.getElementById("nav-farm-name").textContent = data.farmer.farm_name;
+            }
+
+            if (data.weather) {
+                document.getElementById("weather-temp").textContent = `${Math.round(data.weather.temperature)}°`;
+                document.getElementById("weather-humidity").textContent = `${Math.round(data.weather.humidity)}%`;
+                document.getElementById("weather-rain").textContent = `${Math.round(data.weather.rain_probability)}%`;
+                document.getElementById("weather-wind").textContent = `${Math.round(data.weather.wind_speed)}km/h`;
+                document.getElementById("weather-icon").textContent = data.weather.condition_icon || "partly_cloudy_day";
+            }
+
+            if (data.ai_alert) {
+                document.getElementById("ai-alert-message").textContent = data.ai_alert.message;
+            }
+
+            if (data.farm_health) {
+                document.getElementById("farm-health-score").textContent = `${data.farm_health.score}/100`;
+            }
+        } catch (e) {
+            console.warn("Using baseline dashboard cache:", e);
+        }
+    }
+
+    function openCropRecommendModal() {
+        document.getElementById("crop-recommend-modal").classList.remove("hidden");
+    }
+
+    function closeCropRecommendModal() {
+        document.getElementById("crop-recommend-modal").classList.add("hidden");
+    }
+
+    async function submitCropRecommendation() {
+        const btn = document.getElementById("btn-predict-crop");
+        btn.disabled = true;
+        btn.innerHTML = `<span class="material-symbols-outlined animate-spin">sync</span> Running ML Model...`;
+
+        const payload = {
+            nitrogen: parseFloat(document.getElementById("rec-n").value),
+            phosphorus: parseFloat(document.getElementById("rec-p").value),
+            potassium: parseFloat(document.getElementById("rec-k").value),
+            temperature: parseFloat(document.getElementById("rec-temp").value),
+            humidity: parseFloat(document.getElementById("rec-hum").value),
+            ph: parseFloat(document.getElementById("rec-ph").value),
+            rainfall: parseFloat(document.getElementById("rec-rain").value)
+        };
+
+        try {
+            const res = await ApiClient.crops.recommend(payload);
+            const resBox = document.getElementById("crop-recommend-result");
+            resBox.classList.remove("hidden");
+
+            document.getElementById("rec-crop-name").textContent = res.recommended_crop;
+            document.getElementById("rec-confidence").textContent = `${res.confidence}% Confidence`;
+            document.getElementById("rec-season").textContent = `Suitable Season: ${res.suitable_season}`;
+            document.getElementById("rec-guidance").textContent = res.guidance;
+
+            if (res.alternatives && res.alternatives.length) {
+                const altText = res.alternatives.map(a => `${a.crop} (${a.confidence}%)`).join(", ");
+                document.getElementById("rec-alternatives").textContent = `Alternatives: ${altText}`;
+            } else {
+                document.getElementById("rec-alternatives").textContent = "";
+            }
+        } catch (err) {
+            alert(err.message || "Prediction error");
+        } finally {
+            btn.disabled = false;
+            btn.innerHTML = `<span class="material-symbols-outlined">travel_explore</span> Predict Best Crop`;
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", loadDashboard);
+</script>
+</body>
+</html>

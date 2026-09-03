@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Smart Farming AI - Authentication</title>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#002117",
+                        "secondary-fixed-dim": "#95d3ba",
+                        "on-tertiary-fixed-variant": "#3e4943",
+                        "primary-fixed-dim": "#4edea3",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#adedd3",
+                        "on-primary-fixed-variant": "#005236",
+                        "surface": "#f8f9ff",
+                        "on-secondary-container": "#306d58",
+                        "on-primary-fixed": "#002113",
+                        "background": "#f8f9ff",
+                        "inverse-primary": "#4edea3",
+                        "on-background": "#0b1c30",
+                        "surface-tint": "#006c49",
+                        "tertiary-fixed-dim": "#bdcac1",
+                        "outline-variant": "#bbcabf",
+                        "primary-fixed": "#6ffbbe",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-tertiary-fixed": "#131e19",
+                        "surface-bright": "#f8f9ff",
+                        "surface-container-high": "#dce9ff",
+                        "tertiary": "#55615a",
+                        "outline": "#6c7a71",
+                        "on-secondary-fixed-variant": "#0b513d",
+                        "error": "#ba1a1a",
+                        "secondary": "#2b6954",
+                        "on-error": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#e5eeff",
+                        "primary-container": "#10b981",
+                        "on-primary-container": "#00422b",
+                        "primary": "#006c49",
+                        "tertiary-container": "#99a69e",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#303c36",
+                        "surface-variant": "#d3e4fe",
+                        "inverse-surface": "#213145",
+                        "surface-dim": "#cbdbf5",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#0b1c30",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#eff4ff",
+                        "tertiary-fixed": "#d9e6dd",
+                        "secondary-fixed": "#b0f0d6",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#3c4a42",
+                        "inverse-on-surface": "#eaf1ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "xs": "4px",
+                        "md": "24px",
+                        "margin-desktop": "48px",
+                        "lg": "40px",
+                        "base": "8px",
+                        "xl": "64px",
+                        "sm": "12px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["manrope"],
+                        "display-lg": ["hankenGrotesk"],
+                        "body-lg": ["manrope"],
+                        "title-md": ["hankenGrotesk"],
+                        "headline-lg-mobile": ["hankenGrotesk"],
+                        "headline-lg": ["hankenGrotesk"],
+                        "body-md": ["manrope"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "title-md": ["20px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .form-input-styled {
+            width: 100%;
+            padding: 12px 16px;
+            background-color: #ffffff;
+            border: 1px solid #bbcabf;
+            border-radius: 2rem;
+            color: #0b1c30;
+            font-family: 'manrope', sans-serif;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+        .form-input-styled:focus {
+            border-color: #006c49;
+            box-shadow: 0 0 0 2px rgba(0, 108, 73, 0.2);
+        }
+        .btn-primary {
+            width: 100%;
+            padding: 14px 24px;
+            background-color: #006c49;
+            color: #ffffff;
+            font-family: 'hankenGrotesk', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(0, 108, 73, 0.2);
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        .btn-primary:hover {
+            background-color: #005236;
+        }
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex items-center justify-center font-body-md overflow-x-hidden p-margin-mobile md:p-margin-desktop">
+<!-- Main Container -->
+<main class="w-full max-w-[1200px] flex flex-col md:flex-row bg-surface-container-lowest rounded-xl shadow-[0_8px_32px_rgba(0,0,0,0.08)] overflow-hidden">
+<!-- Left Side: Hero Image / Brand -->
+<div class="hidden md:block md:w-1/2 relative bg-primary-container p-xl flex flex-col justify-between" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDofBSOBqok8NKOevH4ammpWYKY6grdy6Eymud-eE5030YnnSIyQPdDcFI0zUgr_jOv6lBXTlc8OncvIcT1as57oIftJTvAUq9cw7935M0VijU9gaZBUbfZYYX9jX9EdCexNAiu1Uki9wZc1mPxoNwqEn7JvOX7fwr0B-4qGgt8UVHZyB8V8PGSxkkaOnNBXFEC3nIIJtZbBy4J1zgtZhvF8o2TD4X_NHGb32Mw5nNr9iQAtrAcHJRQhA'); background-size: cover; background-position: center;">
+<div class="absolute inset-0 bg-gradient-to-b from-primary/80 to-primary/40"></div>
+<div class="relative z-10 flex flex-col h-full justify-between">
+<div>
+<h1 class="font-display-lg text-on-primary mb-sm flex items-center gap-sm">
+<span class="material-symbols-outlined text-[48px]" style="font-variation-settings: 'FILL' 1;">agriculture</span>
+Smart Farming AI
+</h1>
+<p class="font-body-lg text-on-primary opacity-90 max-w-md">
+    Precision vitality for your fields. Harness the power of artificial intelligence to optimize crop yields and sustainable practices.
+</p>
+</div>
+<div class="mt-auto">
+<div class="bg-surface-container-lowest/20 backdrop-blur-md rounded-lg p-md border border-on-primary/20">
+<div class="flex items-center gap-sm mb-xs">
+<span class="material-symbols-outlined text-primary-fixed" style="font-variation-settings: 'FILL' 1;">spa</span>
+<span class="font-title-md text-on-primary">Yield Optimization</span>
+</div>
+<p class="font-body-md text-on-primary/90">Join thousands of Indian farmers increasing crop efficiency by up to 30% through AI-driven insights.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Side: Forms Container -->
+<div class="w-full md:w-1/2 p-md md:p-xl relative bg-surface-container-lowest">
+<!-- Mobile Brand Header -->
+<div class="md:hidden flex items-center gap-xs mb-lg justify-center">
+<span class="material-symbols-outlined text-primary text-[32px]" style="font-variation-settings: 'FILL' 1;">agriculture</span>
+<span class="font-headline-lg-mobile text-primary font-bold">Smart Farming AI</span>
+</div>
+<!-- View Toggle -->
+<div class="flex bg-surface-container p-xs rounded-full mb-lg w-full max-w-sm mx-auto">
+<button class="w-1/2 py-sm text-center font-title-md rounded-full bg-surface-container-lowest shadow-sm text-primary transition-all" id="toggle-otp" onclick="switchTab('otp')">
+    Mobile OTP
+</button>
+<button class="w-1/2 py-sm text-center font-title-md rounded-full text-on-surface-variant transition-all" id="toggle-password" onclick="switchTab('password')">
+    Password Login
+</button>
+</div>
+
+<!-- Alert Banner Container -->
+<div id="alert-banner" class="hidden mb-md p-sm rounded-lg text-sm font-medium"></div>
+
+<!-- 1. Mobile OTP Login Form -->
+<div class="block animate-fade-in w-full max-w-md mx-auto" id="otp-form-view">
+<div class="mb-lg">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-on-surface mb-xs">Mobile Number Login</h2>
+<p class="font-body-md text-on-surface-variant">Instant access with secure 6-digit SMS OTP.</p>
+</div>
+
+<!-- Step 1: Enter Phone Number -->
+<div id="otp-step-phone">
+<div class="mb-md">
+<label class="block font-title-md text-on-surface mb-xs">Mobile Number (India)</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline">phone</span>
+<input id="otp-phone-input" class="form-input-styled pl-xl" placeholder="+91 9876543210" type="tel" value="+91"/>
+</div>
+<span class="text-xs text-on-surface-variant mt-1 block">Supports India +91 format</span>
+</div>
+<button id="btn-send-otp" onclick="handleSendOTP()" class="btn-primary mt-lg" type="button">
+    <span class="material-symbols-outlined text-[20px]">send_to_mobile</span>
+    Send OTP
+</button>
+</div>
+
+<!-- Step 2: Enter OTP Code (Initially Hidden) -->
+<div id="otp-step-verify" class="hidden space-y-md">
+<div class="p-sm bg-primary-container/20 rounded-lg border border-primary/20 flex items-center justify-between">
+    <div>
+        <span class="text-xs text-on-surface-variant block">OTP sent to:</span>
+        <span id="display-phone" class="font-semibold text-primary"></span>
+    </div>
+    <button onclick="changePhone()" class="text-xs text-primary font-bold hover:underline">Change</button>
+</div>
+
+<div>
+<label class="block font-title-md text-on-surface mb-xs">Enter 6-Digit OTP</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline">lock</span>
+<input id="otp-code-input" class="form-input-styled pl-xl text-center tracking-widest text-2xl font-bold" maxlength="6" placeholder="• • • • • •" type="text"/>
+</div>
+<div class="flex justify-between items-center mt-xs">
+<span id="cooldown-timer" class="text-xs text-on-surface-variant">Resend in 60s</span>
+<button id="btn-resend" onclick="handleResendOTP()" disabled class="text-xs text-primary font-semibold disabled:opacity-50 hover:underline">Resend OTP</button>
+</div>
+</div>
+
+<button id="btn-verify-otp" onclick="handleVerifyOTP()" class="btn-primary mt-md" type="button">
+    <span class="material-symbols-outlined text-[20px]">verified</span>
+    Verify &amp; Login
+</button>
+</div>
+</div>
+
+<!-- 2. Password Login Form (Tab 2) -->
+<div class="hidden animate-fade-in w-full max-w-md mx-auto" id="password-form-view">
+<div class="mb-lg">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-on-surface mb-xs">Welcome Back</h2>
+<p class="font-body-md text-on-surface-variant">Enter your phone/email and password.</p>
+</div>
+<form class="space-y-md" onsubmit="event.preventDefault(); handlePasswordLogin();">
+<div>
+<label class="block font-title-md text-on-surface mb-xs">Phone or Email</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline">person</span>
+<input id="login-identifier" class="form-input-styled pl-xl" placeholder="Enter phone or email" type="text"/>
+</div>
+</div>
+<div>
+<label class="block font-title-md text-on-surface mb-xs">Password</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline">lock</span>
+<input id="login-password" class="form-input-styled pl-xl" placeholder="Enter password" type="password"/>
+</div>
+</div>
+<button id="btn-password-login" class="btn-primary mt-lg" type="submit">
+    Login
+</button>
+</form>
+</div>
+
+<!-- 3. Register Link / Language Selector -->
+<div class="mt-xl pt-md border-t border-outline-variant/30 text-center">
+<p class="font-body-md text-on-surface-variant text-sm">
+    Protected by 256-bit encryption. Safe &amp; verified for farmers.
+</p>
+<div class="mt-sm flex justify-center gap-xs">
+    <span class="text-xs text-on-surface-variant">Languages:</span>
+    <span class="text-xs font-bold text-primary">English</span> •
+    <span class="text-xs font-bold text-primary">తెలుగు (Telugu)</span> •
+    <span class="text-xs font-bold text-primary">हिन्दी (Hindi)</span>
+</div>
+</div>
+
+</div>
+</main>
+
+<script src="js/api.js"></script>
+<script>
+    let countdownInterval = null;
+    let secondsLeft = 60;
+    let targetPhone = "";
+
+    function showAlert(message, isError = true) {
+        const banner = document.getElementById("alert-banner");
+        banner.className = isError 
+            ? "mb-md p-sm rounded-lg text-sm font-medium bg-error-container text-on-error-container border border-error/20"
+            : "mb-md p-sm rounded-lg text-sm font-medium bg-secondary-container text-on-secondary-container border border-primary/20";
+        banner.textContent = message;
+        banner.classList.remove("hidden");
+    }
+
+    function clearAlert() {
+        const banner = document.getElementById("alert-banner");
+        banner.classList.add("hidden");
+        banner.textContent = "";
+    }
+
+    function switchTab(tab) {
+        clearAlert();
+        const otpView = document.getElementById('otp-form-view');
+        const passView = document.getElementById('password-form-view');
+        const btnOtp = document.getElementById('toggle-otp');
+        const btnPass = document.getElementById('toggle-password');
+
+        const activeClasses = ['bg-surface-container-lowest', 'shadow-sm', 'text-primary'];
+        const inactiveClasses = ['text-on-surface-variant'];
+
+        if (tab === 'otp') {
+            otpView.classList.remove('hidden');
+            passView.classList.add('hidden');
+            btnOtp.classList.add(...activeClasses);
+            btnOtp.classList.remove(...inactiveClasses);
+            btnPass.classList.remove(...activeClasses);
+            btnPass.classList.add(...inactiveClasses);
+        } else {
+            otpView.classList.add('hidden');
+            passView.classList.remove('hidden');
+            btnPass.classList.add(...activeClasses);
+            btnPass.classList.remove(...inactiveClasses);
+            btnOtp.classList.remove(...activeClasses);
+            btnOtp.classList.add(...inactiveClasses);
+        }
+    }
+
+    function startCooldownTimer() {
+        secondsLeft = 60;
+        const timerLabel = document.getElementById("cooldown-timer");
+        const resendBtn = document.getElementById("btn-resend");
+        resendBtn.disabled = true;
+
+        clearInterval(countdownInterval);
+        countdownInterval = setInterval(() => {
+            secondsLeft--;
+            if (secondsLeft <= 0) {
+                clearInterval(countdownInterval);
+                timerLabel.textContent = "You can resend now";
+                resendBtn.disabled = false;
+            } else {
+                timerLabel.textContent = `Resend in ${secondsLeft}s`;
+            }
+        }, 1000);
+    }
+
+    async function handleSendOTP() {
+        clearAlert();
+        const phoneInput = document.getElementById("otp-phone-input").value.trim();
+        if (!phoneInput || phoneInput === "+91") {
+            showAlert("Please enter a valid 10-digit mobile number.");
+            return;
+        }
+
+        const sendBtn = document.getElementById("btn-send-otp");
+        sendBtn.disabled = true;
+        sendBtn.innerHTML = `<span class="material-symbols-outlined animate-spin text-[20px]">sync</span> Sending OTP...`;
+
+        try {
+            const res = await ApiClient.auth.sendOTP(phoneInput);
+            targetPhone = phoneInput;
+            document.getElementById("display-phone").textContent = phoneInput;
+            document.getElementById("otp-step-phone").classList.add("hidden");
+            document.getElementById("otp-step-verify").classList.remove("hidden");
+
+            startCooldownTimer();
+
+            let msg = res.message || "OTP sent successfully.";
+            if (res.dev_otp) {
+                msg += ` [Dev OTP: ${res.dev_otp}]`;
+                document.getElementById("otp-code-input").value = res.dev_otp;
+            }
+            showAlert(msg, false);
+        } catch (err) {
+            showAlert(err.message || "Failed to send OTP. Please check the number.");
+        } finally {
+            sendBtn.disabled = false;
+            sendBtn.innerHTML = `<span class="material-symbols-outlined text-[20px]">send_to_mobile</span> Send OTP`;
+        }
+    }
+
+    async function handleResendOTP() {
+        clearAlert();
+        try {
+            const res = await ApiClient.auth.resendOTP(targetPhone);
+            startCooldownTimer();
+            let msg = res.message || "New OTP sent.";
+            if (res.dev_otp) {
+                msg += ` [Dev OTP: ${res.dev_otp}]`;
+                document.getElementById("otp-code-input").value = res.dev_otp;
+            }
+            showAlert(msg, false);
+        } catch (err) {
+            showAlert(err.message || "Failed to resend OTP.");
+        }
+    }
+
+    function changePhone() {
+        clearAlert();
+        clearInterval(countdownInterval);
+        document.getElementById("otp-step-verify").classList.add("hidden");
+        document.getElementById("otp-step-phone").classList.remove("hidden");
+    }
+
+    async function handleVerifyOTP() {
+        clearAlert();
+        const otpCode = document.getElementById("otp-code-input").value.trim();
+        if (!otpCode || otpCode.length < 4) {
+            showAlert("Please enter the 6-digit verification code.");
+            return;
+        }
+
+        const verifyBtn = document.getElementById("btn-verify-otp");
+        verifyBtn.disabled = true;
+        verifyBtn.innerHTML = `<span class="material-symbols-outlined animate-spin text-[20px]">sync</span> Verifying...`;
+
+        try {
+            const res = await ApiClient.auth.verifyOTP(targetPhone, otpCode);
+            showAlert("Verification successful! Redirecting to Dashboard...", false);
+            setTimeout(() => {
+                window.location.href = "dashboard.html";
+            }, 800);
+        } catch (err) {
+            showAlert(err.message || "Invalid OTP code. Please try again.");
+            verifyBtn.disabled = false;
+            verifyBtn.innerHTML = `<span class="material-symbols-outlined text-[20px]">verified</span> Verify &amp; Login`;
+        }
+    }
+
+    async function handlePasswordLogin() {
+        clearAlert();
+        const identifier = document.getElementById("login-identifier").value.trim();
+        const password = document.getElementById("login-password").value;
+
+        if (!identifier || !password) {
+            showAlert("Please enter phone/email and password.");
+            return;
+        }
+
+        const btn = document.getElementById("btn-password-login");
+        btn.disabled = true;
+        btn.innerHTML = `<span class="material-symbols-outlined animate-spin text-[20px]">sync</span> Logging in...`;
+
+        try {
+            const res = await ApiClient.auth.login(identifier, password);
+            showAlert("Login successful! Redirecting...", false);
+            setTimeout(() => {
+                window.location.href = "dashboard.html";
+            }, 800);
+        } catch (err) {
+            showAlert(err.message || "Invalid credentials.");
+            btn.disabled = false;
+            btn.textContent = "Login";
+        }
+    }
+</script>
+</body>
+</html>

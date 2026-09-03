@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Smart Farming AI - Weather &amp; Market</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-fixed": "#002117",
+                      "secondary-fixed-dim": "#95d3ba",
+                      "on-tertiary-fixed-variant": "#3e4943",
+                      "primary-fixed-dim": "#4edea3",
+                      "on-primary": "#ffffff",
+                      "secondary-container": "#adedd3",
+                      "on-primary-fixed-variant": "#005236",
+                      "surface": "#f8f9ff",
+                      "on-secondary-container": "#306d58",
+                      "on-primary-fixed": "#002113",
+                      "background": "#f8f9ff",
+                      "inverse-primary": "#4edea3",
+                      "on-background": "#0b1c30",
+                      "surface-tint": "#006c49",
+                      "tertiary-fixed-dim": "#bdcac1",
+                      "outline-variant": "#bbcabf",
+                      "primary-fixed": "#6ffbbe",
+                      "surface-container-highest": "#d3e4fe",
+                      "on-tertiary-fixed": "#131e19",
+                      "surface-bright": "#f8f9ff",
+                      "surface-container-high": "#dce9ff",
+                      "tertiary": "#55615a",
+                      "outline": "#6c7a71",
+                      "on-secondary-fixed-variant": "#0b513d",
+                      "error": "#ba1a1a",
+                      "secondary": "#2b6954",
+                      "on-error": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "surface-container": "#e5eeff",
+                      "primary-container": "#10b981",
+                      "on-primary-container": "#00422b",
+                      "primary": "#006c49",
+                      "tertiary-container": "#99a69e",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary-container": "#303c36",
+                      "surface-variant": "#d3e4fe",
+                      "inverse-surface": "#213145",
+                      "surface-dim": "#cbdbf5",
+                      "error-container": "#ffdad6",
+                      "on-surface": "#0b1c30",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-low": "#eff4ff",
+                      "tertiary-fixed": "#d9e6dd",
+                      "secondary-fixed": "#b0f0d6",
+                      "on-tertiary": "#ffffff",
+                      "on-surface-variant": "#3c4a42",
+                      "inverse-on-surface": "#eaf1ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "xs": "4px",
+                      "md": "24px",
+                      "margin-desktop": "48px",
+                      "lg": "40px",
+                      "base": "8px",
+                      "xl": "64px",
+                      "sm": "12px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "label-sm": ["manrope"],
+                      "display-lg": ["hankenGrotesk"],
+                      "body-lg": ["manrope"],
+                      "title-md": ["hankenGrotesk"],
+                      "headline-lg-mobile": ["hankenGrotesk"],
+                      "headline-lg": ["hankenGrotesk"],
+                      "body-md": ["manrope"]
+              },
+              "fontSize": {
+                      "label-sm": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                      "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                      "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                      "title-md": ["20px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                      "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                      "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                      "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }]
+              }
+            }
+          }
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md h-screen overflow-hidden flex">
+<!-- Desktop SideNav -->
+<nav class="bg-surface-container-low shadow-sm fixed left-0 top-0 h-full w-[280px] hidden md:flex flex-col p-md gap-base z-50">
+<div class="mb-lg cursor-pointer" onclick="window.location.href='index.html'">
+<h1 class="font-hankenGrotesk font-bold text-primary text-headline-lg">Smart Farming AI</h1>
+</div>
+<div class="flex flex-col gap-xs flex-1 overflow-y-auto">
+<a class="flex items-center gap-md p-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-xl" href="dashboard.html">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-md p-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-xl" href="scanner.html">
+<span class="material-symbols-outlined">photo_camera</span>
+<span class="font-body-md">Crop Scanner</span>
+</a>
+<a class="flex items-center gap-md p-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-xl" href="assistant.html">
+<span class="material-symbols-outlined">smart_toy</span>
+<span class="font-body-md">AI Assistant</span>
+</a>
+<a class="flex items-center gap-md p-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-xl" href="soil-irrigation.html">
+<span class="material-symbols-outlined">grass</span>
+<span class="font-body-md">Soil &amp; Water</span>
+</a>
+<a class="flex items-center gap-md p-sm bg-primary-container text-on-primary-container font-bold rounded-xl" href="weather-market.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">thermostat</span>
+<span class="font-title-md">Weather &amp; Market</span>
+</a>
+<a class="flex items-center gap-md p-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-xl" href="setup.html">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md">Farm Setup</span>
+</a>
+</div>
+<div class="mt-auto pt-md border-t border-outline-variant flex flex-col gap-xs">
+<a onclick="ApiClient.auth.logout()" class="flex items-center gap-md p-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-xl cursor-pointer" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-body-md">Logout</span>
+</a>
+</div>
+</nav>
+
+<!-- Mobile TopAppBar -->
+<header class="bg-surface shadow-sm fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 md:hidden">
+<h1 class="font-hankenGrotesk font-bold text-primary text-title-md">Weather &amp; Market</h1>
+<div class="flex items-center gap-sm text-primary">
+<button onclick="window.location.href='setup.html'" class="p-xs rounded-full">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+
+<!-- Main Content Area -->
+<main class="flex-1 w-full md:ml-[280px] h-screen overflow-y-auto pt-16 md:pt-0 pb-24 md:pb-0 px-margin-mobile md:px-margin-desktop bg-background">
+<div class="max-w-7xl mx-auto py-md md:py-lg flex flex-col gap-lg">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-md border-b border-outline-variant pb-sm">
+<div>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-on-background font-bold">Weather &amp; Market Intelligence</h2>
+<p id="weather-location-title" class="font-body-md text-on-surface-variant mt-xs">Hyper-local satellite and agronomic insights for Andhra Pradesh</p>
+</div>
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">location_on</span>
+<span id="display-location" class="font-title-md text-on-surface">Chittoor, Andhra Pradesh</span>
+</div>
+</div>
+
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-md">
+<!-- WEATHER SECTION (Left) -->
+<div class="col-span-1 md:col-span-7 flex flex-col gap-md">
+<!-- Current Weather Card -->
+<div class="bg-surface-container-lowest border border-surface-dim rounded-DEFAULT p-md shadow-sm relative overflow-hidden">
+<div class="absolute -top-10 -right-10 w-48 h-48 bg-primary-container rounded-full blur-3xl opacity-20"></div>
+<div class="relative z-10 flex flex-col md:flex-row justify-between items-start gap-md">
+<div>
+<h3 class="font-title-md text-on-surface mb-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary">wb_sunny</span> Current Conditions
+</h3>
+<div class="flex items-end gap-sm">
+<span id="cur-temp" class="font-display-lg text-primary">32°</span>
+<span id="cur-condition" class="font-title-md text-on-surface-variant pb-2">Partly Cloudy</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-x-lg gap-y-sm bg-surface-container-low p-sm rounded-lg border border-outline-variant/30">
+<div class="flex flex-col">
+<span class="font-label-sm text-on-surface-variant uppercase text-[10px]">Humidity</span>
+<span id="cur-humidity" class="font-title-md text-on-surface flex items-center gap-xs text-sm"><span class="material-symbols-outlined text-sm">humidity_percentage</span> 64%</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-on-surface-variant uppercase text-[10px]">Wind</span>
+<span id="cur-wind" class="font-title-md text-on-surface flex items-center gap-xs text-sm"><span class="material-symbols-outlined text-sm">air</span> 12 km/h</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-on-surface-variant uppercase text-[10px]">Rain Prob.</span>
+<span id="cur-rain" class="font-title-md text-on-surface flex items-center gap-xs text-sm"><span class="material-symbols-outlined text-sm">rainy</span> 15%</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-on-surface-variant uppercase text-[10px]">UV Index</span>
+<span id="cur-uv" class="font-title-md text-on-surface flex items-center gap-xs text-sm"><span class="material-symbols-outlined text-sm">light_mode</span> 8 High</span>
+</div>
+</div>
+</div>
+<!-- AI Advice Banner -->
+<div class="mt-md bg-error-container text-on-error-container p-sm rounded-lg flex items-start gap-sm border border-error/20 shadow-sm">
+<span class="material-symbols-outlined mt-xs">warning</span>
+<div>
+<h4 class="font-title-md font-bold text-sm">AI Agricultural Advisory</h4>
+<p id="weather-advisory" class="font-body-md text-xs mt-xs">Favorable weather for intercultural operations and weeding. Next spell of showers predicted on Thursday.</p>
+</div>
+</div>
+</div>
+
+<!-- 7-Day Forecast -->
+<div class="bg-surface-container-lowest border border-surface-dim rounded-DEFAULT p-md shadow-sm">
+<h3 class="font-title-md text-on-surface mb-md text-sm font-bold">7-Day Agro-Forecast</h3>
+<div id="forecast-cards-container" class="flex gap-sm overflow-x-auto pb-sm snap-x">
+<!-- Dynamic forecast cards injected here -->
+</div>
+</div>
+</div>
+
+<!-- MARKET INSIGHTS SECTION (Right) -->
+<div class="col-span-1 md:col-span-5 flex flex-col gap-md">
+<div class="bg-surface-container-lowest border border-surface-dim rounded-DEFAULT p-md shadow-sm h-full flex flex-col">
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-title-md text-on-surface flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary">storefront</span> Mandi Market Prices
+</h3>
+<select id="market-crop-select" onchange="updateMandiPrice(this.value)" class="appearance-none bg-surface-container-low border border-outline-variant text-on-surface font-body-md py-xs pl-sm pr-lg rounded-lg text-sm">
+<option value="Tomato">Tomato</option>
+<option value="Chilli">Chilli</option>
+<option value="Rice">Rice (Paddy)</option>
+<option value="Cotton">Cotton</option>
+<option value="Onion">Onion</option>
+</select>
+</div>
+<!-- Price Trend Indicator -->
+<div class="bg-primary-container/20 border border-primary/20 rounded-lg p-sm flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-primary bg-primary-container p-xs rounded-full">trending_up</span>
+<div>
+<p id="trend-title" class="font-title-md text-primary text-sm">Price Trend: Strong &amp; Bullish</p>
+<p id="trend-sub" class="font-body-md text-on-surface-variant text-xs">Expected +6% next week due to high metropolitan demand.</p>
+</div>
+</div>
+<!-- Detailed Mandi Rate List -->
+<div class="space-y-sm flex-1">
+<div class="p-3 bg-surface-container-low rounded-lg flex justify-between items-center border border-outline-variant/20">
+<div>
+<h4 id="mandi-crop-name" class="font-bold text-on-surface text-sm">Tomato (Hybrid)</h4>
+<span class="text-xs text-on-surface-variant">Madanapalle / Chittoor Mandi</span>
+</div>
+<div class="text-right">
+<div id="mandi-current-price" class="font-bold text-primary text-base">₹2,400 / Quintal</div>
+<span class="text-[10px] text-primary font-bold">▲ +₹180 today</span>
+</div>
+</div>
+<div class="p-3 bg-surface-container-low rounded-lg flex justify-between items-center border border-outline-variant/20">
+<div>
+<h4 class="font-bold text-on-surface text-sm">Kurnool APMC</h4>
+<span class="text-xs text-on-surface-variant">Arrival Volume: 140 Tonnes</span>
+</div>
+<div class="text-right">
+<div class="font-bold text-on-surface text-base">₹2,350 / Quintal</div>
+<span class="text-[10px] text-on-surface-variant">Stable</span>
+</div>
+</div>
+</div>
+<!-- Market Insight Tip -->
+<div class="mt-auto pt-md border-t border-outline-variant/20">
+<p class="text-xs text-on-surface-variant leading-relaxed">
+<strong>AI Selling Recommendation:</strong> Harvest breaker-stage crop tomorrow to capture premium wholesale rates before peak weekend volume arrives.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+
+<!-- Bottom Nav (Mobile) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe h-20 md:hidden bg-surface-container rounded-t-lg shadow-[0_-4px_12px_rgba(0,0,0,0.05)]">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/50 active:scale-90 transition-all duration-300 w-12 h-12" href="dashboard.html">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-[10px] mt-0.5">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/50 active:scale-90 transition-all duration-300 w-12 h-12" href="dashboard.html">
+<span class="material-symbols-outlined">agriculture</span>
+<span class="font-label-sm text-[10px] mt-0.5">Crops</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/50 active:scale-90 transition-all duration-300 w-12 h-12" href="scanner.html">
+<span class="material-symbols-outlined">qr_code_scanner</span>
+<span class="font-label-sm text-[10px] mt-0.5">Scan</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/50 active:scale-90 transition-all duration-300 w-12 h-12" href="assistant.html">
+<span class="material-symbols-outlined">smart_toy</span>
+<span class="font-label-sm text-[10px] mt-0.5">AI</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/50 active:scale-90 transition-all duration-300 w-12 h-12" href="setup.html">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-[10px] mt-0.5">Profile</span>
+</a>
+</nav>
+
+<script src="js/api.js"></script>
+<script>
+    const MANDI_DATA = {
+        "Tomato": { name: "Tomato (Hybrid)", price: "₹2,400 / Quintal", change: "▲ +₹180 today", trend: "Expected +6% next week due to high demand" },
+        "Chilli": { name: "Guntur Dry Chilli (Teja)", price: "₹18,500 / Quintal", change: "▲ +₹400 today", trend: "Export demand strong" },
+        "Rice": { name: "BPT 5204 (Samba Mahsuri)", price: "₹2,850 / Quintal", change: "Stable", trend: "Steady state procurement" },
+        "Cotton": { name: "Medium Staple Cotton", price: "₹7,200 / Quintal", change: "▲ +₹120 today", trend: "Mill procurement active" },
+        "Onion": { name: "Red Onion (Bellary)", price: "₹1,950 / Quintal", change: "▼ -₹50 today", trend: "Fresh arrivals stabilizing price" }
+    };
+
+    function updateMandiPrice(crop) {
+        const item = MANDI_DATA[crop] || MANDI_DATA["Tomato"];
+        document.getElementById("mandi-crop-name").textContent = item.name;
+        document.getElementById("mandi-current-price").textContent = item.price;
+        document.getElementById("trend-sub").textContent = item.trend;
+    }
+
+    async function loadWeatherData() {
+        try {
+            const data = await ApiClient.weather.getForecast();
+            if (data.current) {
+                document.getElementById("display-location").textContent = data.location;
+                document.getElementById("cur-temp").textContent = `${Math.round(data.current.temperature)}°`;
+                document.getElementById("cur-condition").textContent = data.current.condition;
+                document.getElementById("cur-humidity").innerHTML = `<span class="material-symbols-outlined text-sm">humidity_percentage</span> ${Math.round(data.current.humidity)}%`;
+                document.getElementById("cur-wind").innerHTML = `<span class="material-symbols-outlined text-sm">air</span> ${Math.round(data.current.wind_speed)} km/h`;
+                document.getElementById("cur-rain").innerHTML = `<span class="material-symbols-outlined text-sm">rainy</span> ${Math.round(data.current.rain_probability)}%`;
+                document.getElementById("cur-uv").innerHTML = `<span class="material-symbols-outlined text-sm">light_mode</span> ${data.current.uv_index}`;
+                document.getElementById("weather-advisory").textContent = data.current.ai_advisory;
+            }
+
+            if (data.forecast && data.forecast.length) {
+                const container = document.getElementById("forecast-cards-container");
+                container.innerHTML = data.forecast.map((d, i) => `
+                    <div class="min-w-[100px] flex flex-col items-center p-sm bg-surface-container-low rounded-lg snap-start border border-outline-variant/20 hover:bg-surface-container transition-colors">
+                        <span class="font-label-sm ${i === 1 ? 'text-error font-bold' : 'text-on-surface-variant'}">${d.day}</span>
+                        <span class="material-symbols-outlined text-primary my-xs">${d.icon || 'partly_cloudy_day'}</span>
+                        <div class="font-title-md text-on-surface text-sm">${Math.round(d.temp_max)}° <span class="text-on-surface-variant text-xs">${Math.round(d.temp_min)}°</span></div>
+                        <span class="text-[10px] text-secondary mt-1 font-semibold">${Math.round(d.rain_probability)}% rain</span>
+                    </div>
+                `).join("");
+            }
+        } catch (e) {
+            console.warn("Using baseline weather:", e);
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", loadWeatherData);
+</script>
+</body>
+</html>

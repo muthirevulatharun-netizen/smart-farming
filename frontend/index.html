@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Smart Farming AI - Intelligent Agriculture</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=Manrope:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-fixed": "#002117",
+                      "secondary-fixed-dim": "#95d3ba",
+                      "on-tertiary-fixed-variant": "#3e4943",
+                      "primary-fixed-dim": "#4edea3",
+                      "on-primary": "#ffffff",
+                      "secondary-container": "#adedd3",
+                      "on-primary-fixed-variant": "#005236",
+                      "surface": "#f8f9ff",
+                      "on-secondary-container": "#306d58",
+                      "on-primary-fixed": "#002113",
+                      "background": "#f8f9ff",
+                      "inverse-primary": "#4edea3",
+                      "on-background": "#0b1c30",
+                      "surface-tint": "#006c49",
+                      "tertiary-fixed-dim": "#bdcac1",
+                      "outline-variant": "#bbcabf",
+                      "primary-fixed": "#6ffbbe",
+                      "surface-container-highest": "#d3e4fe",
+                      "on-tertiary-fixed": "#131e19",
+                      "surface-bright": "#f8f9ff",
+                      "surface-container-high": "#dce9ff",
+                      "tertiary": "#55615a",
+                      "outline": "#6c7a71",
+                      "on-secondary-fixed-variant": "#0b513d",
+                      "error": "#ba1a1a",
+                      "secondary": "#2b6954",
+                      "on-error": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "surface-container": "#e5eeff",
+                      "primary-container": "#10b981",
+                      "on-primary-container": "#00422b",
+                      "primary": "#006c49",
+                      "tertiary-container": "#99a69e",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary-container": "#303c36",
+                      "surface-variant": "#d3e4fe",
+                      "inverse-surface": "#213145",
+                      "surface-dim": "#cbdbf5",
+                      "error-container": "#ffdad6",
+                      "on-surface": "#0b1c30",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-low": "#eff4ff",
+                      "tertiary-fixed": "#d9e6dd",
+                      "secondary-fixed": "#b0f0d6",
+                      "on-tertiary": "#ffffff",
+                      "on-surface-variant": "#3c4a42",
+                      "inverse-on-surface": "#eaf1ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "xs": "4px",
+                      "md": "24px",
+                      "margin-desktop": "48px",
+                      "lg": "40px",
+                      "base": "8px",
+                      "xl": "64px",
+                      "sm": "12px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "label-sm": ["manrope"],
+                      "display-lg": ["hankenGrotesk"],
+                      "body-lg": ["manrope"],
+                      "title-md": ["hankenGrotesk"],
+                      "headline-lg-mobile": ["hankenGrotesk"],
+                      "headline-lg": ["hankenGrotesk"],
+                      "body-md": ["manrope"]
+              },
+              "fontSize": {
+                      "label-sm": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                      "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                      "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                      "title-md": ["20px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                      "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                      "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                      "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+        body {
+            background-color: #f8f9ff;
+            color: #0b1c30;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased overflow-x-hidden">
+<!-- Top Navigation (Desktop) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 bg-surface dark:bg-background shadow-sm">
+<div class="flex items-center gap-xs cursor-pointer" onclick="window.location.href='index.html'">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim text-title-md" style="font-variation-settings: 'FILL' 1;">eco</span>
+<span class="font-hankenGrotesk font-bold text-primary dark:text-primary-fixed-dim text-title-md">Smart Farming AI</span>
+</div>
+<nav class="hidden md:flex items-center gap-md">
+<a class="font-body-md text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors" href="#features">Features</a>
+<a class="font-body-md text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors" href="dashboard.html">Dashboard</a>
+<div class="flex items-center gap-sm ml-md">
+<button onclick="window.location.href='auth.html'" class="font-body-md font-semibold text-primary px-4 py-2 rounded-full hover:bg-surface-container transition-colors">Login</button>
+<button onclick="window.location.href='auth.html'" class="bg-primary text-on-primary font-body-md font-semibold px-6 py-2 rounded-full hover:bg-primary/90 transition-colors shadow-md">Sign Up</button>
+</div>
+</nav>
+<div class="md:hidden flex items-center gap-sm">
+<button onclick="window.location.href='auth.html'" class="p-2 rounded-full text-on-surface-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<main class="pt-20 pb-24 md:pb-0">
+<!-- Hero Section -->
+<section class="relative w-full min-h-[921px] flex items-center justify-center px-margin-mobile md:px-margin-desktop overflow-hidden">
+<!-- Background Image with Overlay -->
+<div class="absolute inset-0 z-0">
+<div class="w-full h-full bg-cover bg-center absolute inset-0" data-alt="A modern agricultural scene showing a farmer in a lush green crop field at sunrise." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBhf89Mow_knAq06FkalJHfTwbNdSLk2aRVIDn5D6H1bitVFpplDvChfgELhSck67Egk-P0AEQpi3RS8EJcNPx3YWwNXIDgUxUFhrC08coaEedeJGRhOfLJ6748T93FTnRuCVlosO1u4U8aQ4H-X3tG8dz9NViRhRm01DeH5a-E_QeocWXnECkOemQMUjv-2BnmpVZkRVWkhSOMl3GeaZcA-3vhfS906bCZveGV2dxX1wSRon8tF4LSHA')"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-surface/90 via-surface/70 to-transparent"></div>
+</div>
+<div class="relative z-10 w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-lg items-center">
+<div class="md:col-span-7 flex flex-col gap-md">
+<div class="inline-flex items-center gap-xs bg-primary-container/20 text-primary-fixed-dim font-label-sm px-4 py-2 rounded-full w-fit backdrop-blur-sm border border-primary/20">
+<span class="material-symbols-outlined text-sm">auto_awesome</span>
+<span>AI-Powered Agriculture</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-background max-w-2xl leading-tight">
+<span class="text-primary">Smart Farming AI</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+    Your intelligent farming assistant for healthier crops, smarter decisions and better yields. Harness the power of data to transform your agricultural operations.
+</p>
+<div class="flex flex-col sm:flex-row gap-4 mt-sm">
+<button onclick="window.location.href='auth.html'" class="bg-primary text-on-primary font-body-md font-semibold px-8 py-4 rounded-full hover:bg-primary/90 transition-all shadow-lg hover:shadow-xl active:scale-95 flex items-center justify-center gap-xs">
+    Start Farming
+    <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<button onclick="document.getElementById('features').scrollIntoView({behavior: 'smooth'})" class="bg-surface-container-highest text-on-surface font-body-md font-semibold px-8 py-4 rounded-full hover:bg-surface-variant transition-all border border-outline/20 active:scale-95 flex items-center justify-center">
+    Explore Features
+</button>
+</div>
+<div class="flex items-center gap-sm mt-lg">
+<div class="flex -space-x-3">
+<img class="w-10 h-10 rounded-full border-2 border-surface object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHdFzHPQsJzc3acsSBQqRc3oi3NwTK7uzvueewrRU1Ei8es0MBU2BIXexAIaR2J-o2fwBhl5SFB00OWZ7K91uxvEw_RJfUJge_RBXz2Ga4zOEufG0y9vNPdrSgx7mOBJzs1vKrVmHsb_YJUXiE7-AE3PBr11gujKDe-3ygFLEXnb2120-NQNttquz5JxDwLxYCDl98ST9GDRVief1_xExr5tIH6mA6Xx5_QFXntlkkA6Mn1RGFAb804w"/>
+<img class="w-10 h-10 rounded-full border-2 border-surface object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9eh5GvfMDpgUc99QP3NDPKBva3Wq__Bq3FCvo-f8LAYC6rQuW7Zuzm0f-P8uZNeOXRaWLPcQEnNCUOKFxittshmJQzC8MiUI7Bpk1ok8dhgR2RXbSaBXhNOedGd52C08qOD7D_0RKCig9U9gPItWbR5k8EVmeKJSdx9EBp0BqFkbg-73leHmDqr_pX-sOVhackhituaLj2kzMeoSYd8TI1LEV-PkKWD6FhLodBTmwofTu4-n3V9bMOw"/>
+<img class="w-10 h-10 rounded-full border-2 border-surface object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXS6ZwQW-ATi8kfg9Ul8fbqdnj0l-DqaH7rgPBrPSGLh6lKJf1ERuRaFdkVpW-gaQkfKpHya9ambkmn5QNEZ6we9-N8SKzOXMZBFis17duM-nwwa2xT1LdDR2igUqn86oCN_Fce_E9AYs3vIWqq4oczcAD7-UwSf8Jx_r2VBd1qFmfrcrqoPZxA6q_i8aDyYkYfpJDFSZswgtlEB4T2RXpu0V_THTHNRrxqZG7hzUMHGjP6jodeZ3EOQ"/>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">
+    Trusted by <span class="text-primary font-bold">10,000+</span> farmers across India
+</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Features Bento Grid -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop bg-surface-container-lowest" id="features">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-xl">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background mb-sm">Intelligent Features</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">Everything you need to monitor, manage, and maximize your farm's potential.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-md auto-rows-[240px]">
+<!-- AI Crop Recommendation (Large) -->
+<div onclick="window.location.href='dashboard.html'" class="md:col-span-8 md:row-span-2 glass-card rounded-xl p-md flex flex-col justify-between relative overflow-hidden group hover:shadow-lg transition-all border border-outline/10 bg-gradient-to-br from-surface to-surface-container-low cursor-pointer">
+<div class="relative z-10 max-w-md">
+<div class="w-12 h-12 bg-primary-container text-on-primary-container rounded-lg flex items-center justify-center mb-md shadow-sm">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">psychology</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-background mb-xs">AI Crop Recommendation</h3>
+<p class="font-body-md text-on-surface-variant">Get data-driven suggestions on what to plant based on your specific soil composition, historical weather patterns, and current market demand. Maximize ROI before you even plant a seed.</p>
+</div>
+<div class="absolute right-0 bottom-0 w-1/2 h-full opacity-20 group-hover:opacity-40 transition-opacity">
+<div class="w-full h-full bg-contain bg-no-repeat bg-bottom right-0 absolute" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBZ942iYQCrvBdCAU3Zn0r-4OBf-c59lvjbGtWVdFcfUMjPGtRcJuKrnQQPYPZfbR_sXuBfcLsbdjxkUfJUNCHO3s92MX0Lo1MkA7E42AbrlCCTJs1Ab0SYDzZOywy3-yvnduUN03l41_zpxxiMVQIdLlTJ40_weFu3AZ3KHVnRIlhgCqZ28C3WJR5lJ5jf8RYz39GDlJjoRcNusPGtKQC120gt-3xnDviwUTD8H15xUxPvBEX7BKZ44w')"></div>
+</div>
+</div>
+<!-- Crop Scanner -->
+<div onclick="window.location.href='scanner.html'" class="md:col-span-4 md:row-span-1 glass-card rounded-xl p-md flex flex-col justify-between hover:shadow-lg transition-all border border-outline/10 bg-white cursor-pointer">
+<div class="w-10 h-10 bg-secondary-container text-on-secondary-container rounded-lg flex items-center justify-center mb-sm shadow-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">qr_code_scanner</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-background mb-xs">Crop Scanner</h3>
+<p class="font-body-md text-sm text-on-surface-variant">Instantly identify plant varieties and overall health status with a simple photo.</p>
+</div>
+</div>
+<!-- Disease Detection -->
+<div onclick="window.location.href='scanner.html'" class="md:col-span-4 md:row-span-1 glass-card rounded-xl p-md flex flex-col justify-between hover:shadow-lg transition-all border border-outline/10 bg-white cursor-pointer">
+<div class="w-10 h-10 bg-error-container text-on-error-container rounded-lg flex items-center justify-center mb-sm shadow-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">coronavirus</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-background mb-xs">Disease Detection</h3>
+<p class="font-body-md text-sm text-on-surface-variant">Early warning system for pests and diseases. Snap a picture of a leaf for an instant diagnosis.</p>
+</div>
+</div>
+<!-- Smart Weather -->
+<div onclick="window.location.href='weather-market.html'" class="md:col-span-4 md:row-span-1 glass-card rounded-xl p-md flex flex-col justify-between hover:shadow-lg transition-all border border-outline/10 bg-white cursor-pointer">
+<div class="w-10 h-10 bg-surface-container-high text-on-surface rounded-lg flex items-center justify-center mb-sm shadow-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">partly_cloudy_day</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-background mb-xs">Smart Weather</h3>
+<p class="font-body-md text-sm text-on-surface-variant">Hyper-local, AI-forecasted weather patterns tailored to your exact farm coordinates.</p>
+</div>
+</div>
+<!-- Irrigation Intelligence -->
+<div onclick="window.location.href='soil-irrigation.html'" class="md:col-span-4 md:row-span-1 glass-card rounded-xl p-md flex flex-col justify-between hover:shadow-lg transition-all border border-outline/10 bg-white cursor-pointer">
+<div class="w-10 h-10 bg-surface-variant text-on-surface rounded-lg flex items-center justify-center mb-sm shadow-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-background mb-xs">Irrigation Intelligence</h3>
+<p class="font-body-md text-sm text-on-surface-variant">Optimize water usage based on real-time soil moisture data and upcoming rain forecasts.</p>
+</div>
+</div>
+<!-- Soil Analysis -->
+<div onclick="window.location.href='soil-irrigation.html'" class="md:col-span-4 md:row-span-1 glass-card rounded-xl p-md flex flex-col justify-between hover:shadow-lg transition-all border border-outline/10 bg-white cursor-pointer">
+<div class="w-10 h-10 bg-tertiary-container text-on-tertiary-container rounded-lg flex items-center justify-center mb-sm shadow-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">grass</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-background mb-xs">Soil Analysis</h3>
+<p class="font-body-md text-sm text-on-surface-variant">Track nutrient levels and get specific fertilizer recommendations to maintain soil health.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom Navigation Shell (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe h-20 md:hidden bg-surface-container dark:bg-inverse-surface shadow-[0_-4px_12px_rgba(0,0,0,0.05)] docked full-width bottom-0 rounded-t-lg">
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-full w-12 h-12 md:w-14 md:h-14 active:scale-90 transition-all duration-300" href="index.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-[10px] mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-variant/50 w-12 h-12 rounded-full active:scale-90 transition-all duration-300" href="dashboard.html">
+<span class="material-symbols-outlined">agriculture</span>
+<span class="font-label-sm text-[10px] mt-1">Crops</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-variant/50 w-12 h-12 rounded-full active:scale-90 transition-all duration-300" href="scanner.html">
+<div class="absolute -top-6 bg-primary text-on-primary w-14 h-14 rounded-full flex items-center justify-center shadow-lg border-4 border-surface">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">qr_code_scanner</span>
+</div>
+<span class="font-label-sm text-[10px] mt-6">Scan</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-variant/50 w-12 h-12 rounded-full active:scale-90 transition-all duration-300" href="assistant.html">
+<span class="material-symbols-outlined">smart_toy</span>
+<span class="font-label-sm text-[10px] mt-1">AI</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-variant/50 w-12 h-12 rounded-full active:scale-90 transition-all duration-300" href="setup.html">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-[10px] mt-1">Profile</span>
+</a>
+</nav>
+</main>
+<script src="js/api.js"></script>
+</body>
+</html>
