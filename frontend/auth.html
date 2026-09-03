@@ -8,6 +8,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script>
+  // Hotfix: force frontend API URL to Render backend to avoid Vercel routing 404s
+  // This will be overridden by window.__API_URL__ or build-time env variables when present.
+  window.__API_URL__ = window.__API_URL__ || "https://smart-farming-710v.onrender.com";
+</script>
+<script>
   // Set API URL based on environment
   window.__API_URL__ = (function() {
     const protocol = window.location.protocol;
